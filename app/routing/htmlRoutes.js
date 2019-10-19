@@ -6,7 +6,8 @@ module.exports = function(app) { //why (app) at end?
         res.sendFile(path.join(__dirname + "/../public/survey.html"));
     });
 
-    app.use( function(req, res) { //req & res cannot be changed, right? Can't use pickles for example...
+
+    app.get("*", function(req, res) { //req & res cannot be changed, right? Can't use pickles for example...
         res.sendFile(path.join(__dirname + "/../public/home.html"));
     });
 };

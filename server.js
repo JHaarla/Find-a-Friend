@@ -8,6 +8,8 @@ app.use(express.urlencoded({ extended: false })); // true vs false??? which to u
 
 app.use(express.json());
 
+app.use(express.static("app/public"));
+
 //ROUTER
 require("./app/routing/apiRoutes")(app); //why the (app) at the end?
 require("./app/routing/htmlRoutes")(app);
