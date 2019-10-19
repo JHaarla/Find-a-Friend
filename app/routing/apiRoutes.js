@@ -25,7 +25,7 @@ module.exports = function (app) {
 
         //how do you trigger the modal???
 
-
+        // how does this function trigger? ...need some answers - still confused about this...
     })
 
 };
