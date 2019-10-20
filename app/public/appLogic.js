@@ -38,6 +38,7 @@ $("#submit").on("click", function(event) {
             ]
         };
         // JSON.stringify(userInput);
+        // userInput = JSON.stringify(userInput);
         // console.log("user input: " + JSON.stringify(userInput));
         console.log(`user input: ${userInput}`);
 

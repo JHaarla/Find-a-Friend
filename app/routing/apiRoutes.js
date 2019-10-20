@@ -8,17 +8,16 @@ module.exports = function (app) {
     
 
     app.post("/api/friends", (req, res) => {
-        // data collection, comparing and display of match logic goes in here
-        // obviously, this is as far as I have made it. Will continue to work on this ASAP
 
-        //is this even the right place for the app logic???
+        //set newFriend equal to req.body so we can work with it
+        var newFriend = req.body;
+        console.log(newFriend);
+
+        // pull out the scores so we can work with them
+        var userScores = newFriend.scores;
+        console.log(userScores);
 
 
-        //compare scores and return closest match
-
-
-
-        // capture survey results in variables. push question answers to an array. basically, create an object with the user input.
         // loop over the question results (with parseInt) and store the array in a var
         // loop over the friends array to look at each user one at a time
         //   loop over each friend array user results (parseInt) and store in a temp var (probably save that user's name & photo link as well since there are no index values to refer to...)
