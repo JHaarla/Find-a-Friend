@@ -19,12 +19,20 @@ module.exports = function (app) {
 
         let closestMatch = { // best match will be pushed in here once we figure out who it is
             name: "",
-            photo: ""
+            photo: "",
+            scores: 100
         };
 
-        let scoreDif; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
+        let scoreDif = 0; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
         
         for (var i = 0; i < friendsData.length; i++) {
+            let friendToCompare = friendsData[i];
+
+            for (var j = 0; j < friendToCompare.scores.length; j++) {
+                let friendToCompareScore = friendToCompare.scores[j];
+                let userScoresCompare = userScores[j];
+                scoreDif
+            }
             
         }
 
