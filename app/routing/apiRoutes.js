@@ -15,7 +15,28 @@ module.exports = function (app) {
 
         // pull out the scores so we can work with them
         var userScores = newFriend.scores;
-        // console.log(userScores);
+        console.log(userScores);
+
+        let closestMatch = { // best match will be pushed in here once we figure out who it is
+            name: "",
+            photo: ""
+        };
+
+        let scoreDif; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
+        
+        for (var i = 0; i < friendsData.length; i++) {
+            
+        }
+
+
+
+
+
+
+
+
+
+
 
 
         // console.log(friendsData);
