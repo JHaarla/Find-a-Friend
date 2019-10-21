@@ -20,23 +20,31 @@ module.exports = function (app) {
         let closestMatch = { // best match will be pushed in here once we figure out who it is
             name: "",
             photo: "",
-            scores: 100
+            scores: 100 //setting this high so the first comparison gets pushed in here and then any subsequent lower scores
         };
 
-        let scoreDif = 0; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
+        let scoreDif; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
         
         for (var i = 0; i < friendsData.length; i++) {
             let friendToCompare = friendsData[i];
+            scoreDif = 0; // reset to 0 for each iteration
 
             for (var j = 0; j < friendToCompare.scores.length; j++) {
                 let friendToCompareScore = friendToCompare.scores[j];
                 let userScoresCompare = userScores[j];
-                scoreDif
+                scoreDif += Math.abs(parseInt(friendToCompareScore) - parseInt(userScoresCompare));
             }
             
+            if (scoreDif <= closestMatch.scores) {
+                closestMatch.name = friendToCompare.name;
+                closestMatch.photo = friendToCompare.photo;
+                closestMatch.scores = scoreDif;
+            };
         }
+        
+        friendsData.push(newFriend); // push user input to the friends array so they can be matched with another user.
 
-
+        res.json(closestMatch); // return the closest match back to the POST waiting for a response in appLogic.js
 
 
 
