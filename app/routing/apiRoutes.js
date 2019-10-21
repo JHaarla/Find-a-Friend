@@ -17,36 +17,40 @@ module.exports = function (app) {
         var userScores = newFriend.scores;
         console.log(userScores);
 
-        let closestMatch = { // best match will be pushed in here once we figure out who it is
-            name: "",
-            photo: "",
-            scores: 100 //setting this high so the first comparison gets pushed in here and then any subsequent lower scores
-        };
 
-        let scoreDif; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
+
+        //=============== uncomment below - comparison logic written in the dark - will most likely need tweaking
+
+        // let closestMatch = { // best match will be pushed in here once we figure out who it is
+        //     name: "",
+        //     photo: "",
+        //     scores: 100 //setting this high so the first comparison gets pushed in here and then any subsequent lower scores
+        // };
+
+        // let scoreDif; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
         
-        for (var i = 0; i < friendsData.length; i++) {
-            let friendToCompare = friendsData[i];
-            scoreDif = 0; // reset to 0 for each iteration
+        // for (var i = 0; i < friendsData.length; i++) {
+        //     let friendToCompare = friendsData[i];
+        //     scoreDif = 0; // reset to 0 for each iteration
 
-            for (var j = 0; j < friendToCompare.scores.length; j++) {
-                let friendToCompareScore = friendToCompare.scores[j];
-                let userScoresCompare = userScores[j];
-                scoreDif += Math.abs(parseInt(friendToCompareScore) - parseInt(userScoresCompare));
-            }
+        //     for (var j = 0; j < friendToCompare.scores.length; j++) {
+        //         let friendToCompareScore = friendToCompare.scores[j];
+        //         let userScoresCompare = userScores[j];
+        //         scoreDif += Math.abs(parseInt(friendToCompareScore) - parseInt(userScoresCompare));
+        //     }
             
-            if (scoreDif <= closestMatch.scores) {
-                closestMatch.name = friendToCompare.name;
-                closestMatch.photo = friendToCompare.photo;
-                closestMatch.scores = scoreDif;
-            };
-        }
+        //     if (scoreDif <= closestMatch.scores) {
+        //         closestMatch.name = friendToCompare.name;
+        //         closestMatch.photo = friendToCompare.photo;
+        //         closestMatch.scores = scoreDif;
+        //     };
+        // }
         
-        friendsData.push(newFriend); // push user input to the friends array so they can be matched with another user.
+        // friendsData.push(newFriend); // push user input to the friends array so they can be matched with another user.
 
-        res.json(closestMatch); // return the closest match back to the POST waiting for a response in appLogic.js
+        // res.json(closestMatch); // return the closest match back to the POST waiting for a response in appLogic.js
 
-
+// ==================================================
 
 
 
