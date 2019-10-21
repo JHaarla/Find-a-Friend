@@ -15,7 +15,11 @@ module.exports = function (app) {
 
         // pull out the scores so we can work with them
         var userScores = newFriend.scores;
-        console.log(userScores);
+        // console.log(userScores);
+
+
+        // console.log(friendsData);
+
 
 
         // loop over the question results (with parseInt) and store the array in a var
@@ -27,7 +31,6 @@ module.exports = function (app) {
 
         //how do you trigger the modal???
 
-        // how does this function trigger? ...need some answers - still confused about this...
     })
 
 };
