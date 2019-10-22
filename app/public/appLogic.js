@@ -58,9 +58,9 @@ $("#submit").on("click", function(event) {
     
 
         
-        console.log("user score: " + userScore);
-        console.log("user name: " + userName);
-        console.log("user photo: " + userPhoto);
+        // console.log("user score: " + userScore);
+        // console.log("user name: " + userName);
+        // console.log("user photo: " + userPhoto);
 
 
 
