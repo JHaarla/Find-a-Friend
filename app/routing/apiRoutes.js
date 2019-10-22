@@ -5,72 +5,60 @@ module.exports = function (app) {
 
     // get and display all members 
     app.get("/api/friends", (req, res) => res.json(friendsData));
-    
+
 
     app.post("/api/friends", (req, res) => {
 
-        console.log(req.body)
+        console.log(req.body);
         //set newFriend equal to req.body so we can work with it
         var newFriend = req.body;
-        
+
         console.log(newFriend);
 
         // pull out the scores so we can work with them
-        // var userScores = newFriend.scores;
+        var userScores = newFriend.scores;
         // console.log(userScores);
 
-        res.send(newFriend)
+        // this was a test by Keith - it worked - no need to uncomment, just res.send the match object info later down in the code
+        // res.send(newFriend) 
 
         //=============== uncomment below - comparison logic written in the dark - will most likely need tweaking
 
-        // let closestMatch = { // best match will be pushed in here once we figure out who it is
-        //     name: "",
-        //     photo: "",
-        //     scores: 100 //setting this high so the first comparison gets pushed in here and then any subsequent lower scores
-        // };
+        let closestMatch = { // best match will be pushed in here once we figure out who it is
+            name: "",
+            photo: "",
+            scores: 100 //setting this high so the first comparison gets pushed in here and then any subsequent lower scores
+        };
 
-        // let scoreDif; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
-        
-        // for (var i = 0; i < friendsData.length; i++) {
-        //     let friendToCompare = friendsData[i];
-        //     scoreDif = 0; // reset to 0 for each iteration
+        let scoreDif; //we'll store the lowest friend score difference in here and keep updating if a lower one is found
 
-        //     for (var j = 0; j < friendToCompare.scores.length; j++) {
-        //         let friendToCompareScore = friendToCompare.scores[j];
-        //         let userScoresCompare = userScores[j];
-        //         scoreDif += Math.abs(parseInt(friendToCompareScore) - parseInt(userScoresCompare));
-        //     }
-            
-        //     if (scoreDif <= closestMatch.scores) {
-        //         closestMatch.name = friendToCompare.name;
-        //         closestMatch.photo = friendToCompare.photo;
-        //         closestMatch.scores = scoreDif;
-        //     };
-        // }
-        
-        // friendsData.push(newFriend); // push user input to the friends array so they can be matched with another user.
+        for (var i = 0; i < friendsData.length; i++) {
+            let friendToCompare = friendsData[i];
+            scoreDif = 0; // reset to 0 for each iteration
 
-        // res.json(closestMatch); // return the closest match back to the POST waiting for a response in appLogic.js
+            for (var j = 0; j < friendToCompare.scores.length; j++) {
+                let friendToCompareScore = friendToCompare.scores[j];
+                let userScoresCompare = userScores[j];
+                scoreDif += Math.abs(parseInt(friendToCompareScore) - parseInt(userScoresCompare));
+            }
 
-// ==================================================
+            if (scoreDif <= closestMatch.scores) {
+                closestMatch.name = friendToCompare.name;
+                closestMatch.photo = friendToCompare.photo;
+                closestMatch.scores = scoreDif;
+            };
+        }
+
+        console.log(closestMatch);
+        res.json(closestMatch); // return the closest match back to the POST waiting for a response in appLogic.js
+        friendsData.push(newFriend); // push user input to the friends array so they can be matched with another user.
 
 
-
-
-
+        // ==================================================
 
 
 
         // console.log(friendsData);
-
-
-
-        // loop over the question results (with parseInt) and store the array in a var
-        // loop over the friends array to look at each user one at a time
-        //   loop over each friend array user results (parseInt) and store in a temp var (probably save that user's name & photo link as well since there are no index values to refer to...)
-        // have an if statement check to see if the difference is less than the previous one, if so store it in the temp var
-        // once these loops finish, we should have the best match saved in the temp variable
-        // post temp var info to modal
 
         //how do you trigger the modal???
 

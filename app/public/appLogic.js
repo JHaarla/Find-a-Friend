@@ -94,8 +94,14 @@ $("#submit").on("click", function(event) {
 
         
         axios.post('/api/friends', userInput).then(response => {
-            console.log('this fired')
+            // console.log('this fired')
             console.log(response)
+            $("#match-name").text(response.name);
+            $("#match-img").attr("src", response.photo);
+
+            $("#results-modal").modal("toggle");
+
+
         }).catch(err => {
             console.log(err)
         });
@@ -104,11 +110,11 @@ $("#submit").on("click", function(event) {
 
         // console.log(match)
         //     //grab result from POST and pull out the best match's name & photo
-        //     $("#match-name").text(match.name);
-        //     $("#match-img").attr("src", match.photo);
+            // $("#match-name").text(match.name);
+            // $("#match-img").attr("src", match.photo);
 
         //     // fire the modal with the best match info
-        //     $("#results-modal").modal("toggle");
+            // $("#results-modal").modal("toggle");
 
         // });
 
