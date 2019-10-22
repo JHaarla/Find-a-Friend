@@ -9,15 +9,17 @@ module.exports = function (app) {
 
     app.post("/api/friends", (req, res) => {
 
+        console.log(req.body)
         //set newFriend equal to req.body so we can work with it
         var newFriend = req.body;
+        
         console.log(newFriend);
 
         // pull out the scores so we can work with them
-        var userScores = newFriend.scores;
-        console.log(userScores);
+        // var userScores = newFriend.scores;
+        // console.log(userScores);
 
-
+        res.send(newFriend)
 
         //=============== uncomment below - comparison logic written in the dark - will most likely need tweaking
 

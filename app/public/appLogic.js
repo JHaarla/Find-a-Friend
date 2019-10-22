@@ -1,3 +1,5 @@
+// import Axios from "axios";
+
 $("#submit").on("click", function(event) {
     event.preventDefault();
     // alert("hello");
@@ -85,21 +87,30 @@ $("#submit").on("click", function(event) {
         // userInput = JSON.stringify(userInput);
         // console.log("user input: " + JSON.stringify(userInput));
         // console.log(`user input: ${userInput}`);
-        console.log("user input: " + userInput);
+        console.log(userInput);
 
 
         //this POSTs the collected data to /api/friends
+
         
-        $.post("/api/friends", userInput, function(match) { //this waits until it "hears" back from /api/friends
-
-            //grab result from POST and pull out the best match's name & photo
-            $("#match-name").text(match.name);
-            $("#match-img").attr("src", match.photo);
-
-            // fire the modal with the best match info
-            $("#results-modal").modal("toggle");
-
+        axios.post('/api/friends', userInput).then(response => {
+            console.log('this fired')
+            console.log(response)
+        }).catch(err => {
+            console.log(err)
         });
+        // $.post("/api/friends", userInput, function(match) { //this waits until it "hears" back from /api/friends
+
+
+        // console.log(match)
+        //     //grab result from POST and pull out the best match's name & photo
+        //     $("#match-name").text(match.name);
+        //     $("#match-img").attr("src", match.photo);
+
+        //     // fire the modal with the best match info
+        //     $("#results-modal").modal("toggle");
+
+        // });
 
     } else {
         alert("Please make sure to fill out all fields before submitting!");
