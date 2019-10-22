@@ -96,8 +96,8 @@ $("#submit").on("click", function(event) {
         axios.post('/api/friends', userInput).then(response => {
             // console.log('this fired')
             console.log(response)
-            $("#match-name").text(response.name);
-            $("#match-img").attr("src", response.photo);
+            $("#match-name").text(response.data.name);
+            $("#match-img").attr("src", response.data.photo);
 
             $("#results-modal").modal("toggle");
 
