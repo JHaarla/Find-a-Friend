@@ -6,7 +6,6 @@ module.exports = function (app) {
     // get and display all members 
     app.get("/api/friends", (req, res) => res.json(friendsData));
 
-
     app.post("/api/friends", (req, res) => {
 
         console.log(req.body);
@@ -21,8 +20,6 @@ module.exports = function (app) {
 
         // this was a test by Keith - it worked - no need to uncomment, just res.send the match object info later down in the code
         // res.send(newFriend) 
-
-        //=============== uncomment below - comparison logic written in the dark - will most likely need tweaking
 
         let closestMatch = { // best match will be pushed in here once we figure out who it is
             name: "",
@@ -53,14 +50,7 @@ module.exports = function (app) {
         res.json(closestMatch); // return the closest match back to the POST waiting for a response in appLogic.js
         friendsData.push(newFriend); // push user input to the friends array so they can be matched with another user.
 
-
-        // ==================================================
-
-
-
         // console.log(friendsData);
-
-        //how do you trigger the modal???
 
     })
 
